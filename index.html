@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f0e8">
+  <title>Resume Rush — Build your one-page legend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Resume Rush home" onclick="location.reload();return false"><span class="brand-mark">R<span>R</span></span><span>RESUME <b>RUSH</b></span></a>
+    <div class="top-meta"><span class="live-dot"></span><span id="connection-label">CONNECTING</span><span class="top-divider"></span><span>CAREER CENTER ARCADE <i>·</i> VOL. 01</span></div>
+    <button class="icon-btn help-btn" id="help-button" aria-label="How to play">?</button>
+  </header>
+
+  <main>
+    <section class="screen active" id="home-screen">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR EXPERIENCE, IN PLAY</div>
+          <h1>Make your<br>experience <em>fit.</em></h1>
+          <p class="hero-lede">A fast, friendly resume-building showdown. Catch the details, clear the clutter, and make every line count.</p>
+          <div class="hero-actions"><button class="button button-primary" id="create-button">Start a room <span>↗</span></button><span class="button-or">or</span><button class="button button-outline" id="join-scroll">Join with a code <span>↓</span></button></div>
+          <div class="player-note"><span class="avatar-stack"><i>J</i><i>M</i><i>A</i><i>+</i></span><span>2–8 PLAYERS <b>·</b> EACH ON THEIR OWN DEVICE</span></div>
+        </div>
+        <div class="hero-art" aria-label="An illustrated falling resume block">
+          <div class="art-label label-top">YOUR NEXT<br>MOVE <span>01—04</span></div>
+          <div class="art-grid-shadow"></div>
+          <div class="mini-board">
+            <div class="board-corner">RESUME<br>IN PROGRESS</div>
+            <div class="mini-tile tile-a">EXP<span>Guided 12<br>students / week</span></div>
+            <div class="mini-tile tile-b">SKL<span>Excel · SQL</span></div>
+            <div class="mini-tile tile-c">PRJ<span>Built a campus<br>budget tracker</span></div>
+            <div class="mini-tile tile-d">EDU<span>BA Economics<br>May 2027</span></div>
+            <div class="mini-stamp">ONE<br>PAGE<br><b>ONLY</b></div>
+          </div>
+          <div class="falling-card"><span>VERB OF THE DAY</span><b>BUILT</b><i>↗</i></div>
+          <div class="art-label label-bottom">MAKE ROOM<br>FOR YOUR BEST <span>✳</span></div>
+          <div class="spark spark-one">✳</div><div class="spark spark-two">✳</div>
+        </div>
+      </div>
+      <section class="join-strip" id="join-panel">
+        <div class="join-title"><span class="step-number">01</span><div><b>Already have a room?</b><small>Grab a seat and get ready to build.</small></div></div>
+        <form class="join-form" id="join-form"><label class="sr-only" for="join-code">Room code</label><input id="join-code" autocomplete="one-time-code" maxlength="4" placeholder="ROOM CODE" aria-label="Room code"><button class="button button-dark" type="submit">Join room <span>→</span></button></form>
+      </section>
+      <section class="how-row"><div class="how-heading"><span class="eyebrow">THE SHORT VERSION</span><h2>Make good things<br><em>fit together.</em></h2></div><div class="how-step"><span>01 / CATCH</span><p>Resume details fall as playful blocks. Move and turn them into place.</p></div><div class="how-step"><span>02 / CLEAR</span><p>Fill a full row to clear it. Match action verbs for a bigger combo.</p></div><div class="how-step"><span>03 / OUTSMART</span><p>Earn points and send a 10-second margin squeeze to a random rival.</p></div></section>
+      <footer class="home-footer"><span>MADE FOR THE NEXT STEP <b>✳</b></span><span>A CAREER CENTER GAME NIGHT</span></footer>
+    </section>
+
+    <section class="screen" id="lobby-screen">
+      <div class="section-kicker"><span class="eyebrow-line"></span> ROOM IS OPEN <span class="room-chip" id="lobby-room-code">----</span></div>
+      <div class="lobby-layout">
+        <div class="lobby-main"><h1>Make yourself<br><em>at home.</em></h1><p class="muted-intro">Share the room code with your crew. Once at least two builders are here, the host can start the challenge.</p>
+          <div class="roster-head"><span>BUILDERS IN THIS ROOM</span><span><b id="roster-count">1</b> / 8</span></div><div class="roster-list" id="roster-list"></div>
+          <div class="lobby-actions"><button class="button button-primary" id="start-game-button" disabled>Start the challenge <span>↗</span></button><button class="button button-outline" id="copy-code-button">Copy room code</button></div><div class="lobby-hint" id="lobby-hint">Waiting for one more builder…</div>
+        </div>
+        <aside class="lobby-aside"><div class="room-card"><div class="room-card-top"><span>YOUR ROOM CODE</span><i class="live-dot"></i></div><div class="big-code" id="big-room-code">----</div><button class="copy-link" id="copy-link-button">COPY INVITE LINK <span>↗</span></button></div><div class="rule-card"><span class="eyebrow">QUICK RULES</span><p>Every row clears when it’s full. A row of matching action verbs earns a combo and surprises a random rival with tighter margins.</p><div class="rule-icons"><span>↑ ↓ ← →</span><span>SPACE = DROP</span><span>Q / E = TURN</span></div></div><button class="text-button" id="leave-room-button">← Leave this room</button></aside>
+      </div>
+    </section>
+
+    <section class="screen" id="game-screen">
+      <div class="game-head"><div><div class="section-kicker"><span class="eyebrow-line"></span> ONE PAGE CHALLENGE <span class="room-chip" id="game-room-code">----</span></div><h1>Find the <em>fit.</em></h1></div><div class="game-head-right"><div class="combo-pill" id="combo-pill">COMBO <b id="combo-value">×1</b></div><div class="score-pill"><span>YOUR SCORE</span><b id="score-value">0000</b></div></div></div>
+      <div class="game-layout">
+        <div class="play-column"><div class="board-shell" id="board-shell"><div class="board-topline"><span>ONE-PAGE DRAFT</span><span id="lines-count">LINES <b>00</b></span></div><div class="board-wrap"><div class="board" id="board" role="img" aria-label="Your resume board"></div><div class="margin-mask left-mask" id="left-mask"></div><div class="margin-mask right-mask" id="right-mask"></div><div class="attack-banner" id="attack-banner">MARGINS INCOMING <b>00</b></div></div><div class="board-bottomline"><span>KEEP IT COMPACT</span><span id="pieces-count">DETAILS <b>00 / 48</b></span></div></div>
+          <div class="mobile-controls"><button data-key="ArrowLeft" aria-label="Move left">←</button><button data-key="ArrowDown" aria-label="Soft drop">↓</button><button data-key="ArrowUp" aria-label="Rotate">↻</button><button data-key="ArrowRight" aria-label="Move right">→</button><button data-key="Space" class="drop-control" aria-label="Drop piece">DROP <span>↓</span></button></div>
+          <div class="board-caption"><span class="status-led"></span><span id="game-status">YOUR NEXT BLOCK IS READY</span><span class="keyboard-hint">← → MOVE &nbsp;·&nbsp; ↑ ROTATE &nbsp;·&nbsp; SPACE DROP</span></div>
+        </div>
+        <aside class="game-side"><div class="next-card"><div class="side-card-label">NEXT UP <span>02—04</span></div><div id="next-preview" class="next-preview"></div><div class="next-description" id="next-description">A new resume detail is on the way.</div></div>
+          <div class="players-card"><div class="side-card-label">THE ROSTER <span id="game-player-count">02</span></div><div id="players-board" class="players-board"></div></div>
+          <div class="attack-log"><div class="side-card-label">GAME NIGHT FEED <span>LIVE</span></div><div id="attack-log-items" class="attack-log-items"><p>Match a verb to send someone a margin squeeze.</p></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="screen" id="results-screen"><div class="results-top"><span class="eyebrow"><span class="eyebrow-line"></span> THE PAGE IS SET</span><span class="room-chip" id="results-room-code">----</span></div><div class="results-title"><div class="winner-mark">✳</div><h1 id="results-heading">That’s a <em>wrap.</em></h1><p id="results-subtitle">A little polish goes a long way.</p></div><div class="podium" id="podium"></div><div class="results-actions"><button class="button button-primary" id="back-home-button">Play another round <span>↗</span></button><span class="results-footnote">YOUR EXPERIENCE LOOKS GOOD ON YOU</span></div></section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <dialog class="help-dialog" id="help-dialog"><button class="dialog-close" id="dialog-close" aria-label="Close">×</button><span class="eyebrow">THE PLAYBOOK</span><h2>Clear a line.<br><em>Make it count.</em></h2><p>Move and rotate the falling resume details to fill a horizontal row. Every full row clears, no matter which details are in it. If the bullet points on that row share an action verb, you get a combo multiplier and send a 10-second margin squeeze to a random opponent.</p><p>Fit your content into the one-page board. The more lines and verb combos you clear, the higher your score. The round ends when all builders finish their packet or run out of room.</p><div class="help-keys"><span>← → <b>MOVE</b></span><span>↑ <b>ROTATE</b></span><span>↓ <b>SOFT DROP</b></span><span>SPACE <b>DROP</b></span><span>Q / E <b>ROTATE</b></span></div><button class="button button-dark" id="got-it-button">Got it <span>✓</span></button></dialog>
+  <script src="client.js"></script>
+</body>
+</html>
