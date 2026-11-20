@@ -12,8 +12,8 @@ services:
     region: oregon
     plan: free
     numInstances: 1
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: "npm install"
+    startCommand: "npm start"
     healthCheckPath: /healthz
 {const http = require('node:http');
 const fs = require('node:fs');
